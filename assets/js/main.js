@@ -1,354 +1,293 @@
 /**
- * Ultimate Clean & Optimized Personal Portfolio JS (FINAL FIXED VERSION)
+ * Template Name: Personal
+ * Updated: Sep 18 2023 with Bootstrap v5.3.2
+ * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
  */
-
 (function () {
-  "use strict";
-
-  // =============================
-  // Helper Functions
-  // =============================
-  const select = (el, all = false) => {
-    el = el.trim();
-    return all
-      ? [...document.querySelectorAll(el)]
-      : document.querySelector(el);
-  };
-
-  const on = (type, el, listener, all = false) => {
-    const elements = select(el, all);
-    if (!elements || (all && elements.length === 0)) return;
-
-    if (all) {
-      elements.forEach(e => e.addEventListener(type, listener));
-    } else {
-      elements.addEventListener(type, listener);
-    }
-  };
-
-  const scrollto = (el) => {
-    const element = select(el);
-    if (!element) return;
-
-    const offset = 80;
-    const top = element.offsetTop - offset;
-
-    window.scrollTo({
-      top,
-      behavior: "smooth"
-    });
-  };
-
-  // =============================
-  // Mobile Navigation
-  // =============================
-  on("click", ".mobile-nav-toggle", function () {
-    const navbar = select("#navbar");
-    if (!navbar) return;
-
-    navbar.classList.toggle("navbar-mobile");
-
-    this.classList.toggle("bi-list");
-    this.classList.toggle("bi-x");
-  });
-
-  // =============================
-  // Navigation Handling
-  // =============================
-  on("click", "#navbar .nav-link", function (e) {
-    const section = select(this.hash);
-    if (!section) return;
-
-    e.preventDefault();
-
-    const navbar = select("#navbar");
-    const header = select("#header");
-    const sections = select("section", true);
-    const navlinks = select("#navbar .nav-link", true);
-
-    navlinks.forEach(el => el.classList.remove("active"));
-    this.classList.add("active");
-
-    // close mobile nav
-    if (navbar && navbar.classList.contains("navbar-mobile")) {
-      navbar.classList.remove("navbar-mobile");
-
-      const toggle = select(".mobile-nav-toggle");
-      if (toggle) {
-        toggle.classList.remove("bi-x");
-        toggle.classList.add("bi-list");
-      }
-    }
-
-    // header state
-    if (this.hash === "#header") {
-      header?.classList.remove("header-top");
-      sections.forEach(sec => sec.classList.remove("section-show"));
-      return;
-    }
-
-    if (header && !header.classList.contains("header-top")) {
-      header.classList.add("header-top");
-
-      setTimeout(() => {
-        sections.forEach(sec => sec.classList.remove("section-show"));
-        section.classList.add("section-show");
-      }, 250);
-    } else {
-      sections.forEach(sec => sec.classList.remove("section-show"));
-      section.classList.add("section-show");
-    }
-
-    scrollto(this.hash);
-  }, true);
-
-  // =============================
-  // Load on Hash
-  // =============================
-  window.addEventListener("load", () => {
-    if (!window.location.hash) return;
-
-    const initial = select(window.location.hash);
-    if (!initial) return;
-
-    const header = select("#header");
-    const navlinks = select("#navbar .nav-link", true);
-
-    header?.classList.add("header-top");
-
-    navlinks.forEach(link => {
-      link.classList.toggle(
-        "active",
-        link.getAttribute("href") === window.location.hash
-      );
-    });
-
-    setTimeout(() => {
-      initial.classList.add("section-show");
-    }, 250);
-
-    scrollto(window.location.hash);
-  });
-
-  // =============================
-  // Skills Animation (Waypoint)
-  // =============================
-  if (typeof Waypoint !== "undefined") {
-    const skills = select(".skills-content");
-
-    if (skills) {
-      new Waypoint({
-        element: skills,
-        offset: "85%",
-        handler: function () {
-          select(".progress .progress-bar", true).forEach(el => {
-            el.style.width = el.getAttribute("aria-valuenow") + "%";
-          });
-        }
-      });
-    }
-  }
-
-  // =============================
-  // Swiper Init
-  // =============================
-  if (typeof Swiper !== "undefined") {
-    new Swiper(".testimonials-slider", {
-      speed: 700,
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false
-      },
-      slidesPerView: 1,
-      spaceBetween: 20,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      breakpoints: {
-        1200: { slidesPerView: 3 }
-      }
-    });
-
-    new Swiper(".portfolio-details-slider", {
-      speed: 500,
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      }
-    });
-  }
-
-  // =============================
-  // Portfolio Filter (Isotope)
-  // =============================
-  window.addEventListener("load", () => {
-    if (typeof Isotope === "undefined") return;
-
-    const container = select(".portfolio-container");
-    if (!container) return;
-
-    const iso = new Isotope(container, {
-      itemSelector: ".portfolio-item",
-      layoutMode: "fitRows"
-    });
-
-    on("click", "#portfolio-flters li", function (e) {
-      e.preventDefault();
-
-      select("#portfolio-flters li", true)
-        .forEach(el => el.classList.remove("filter-active"));
-
-      this.classList.add("filter-active");
-
-      iso.arrange({
-        filter: this.getAttribute("data-filter")
-      });
-    }, true);
-  });
-
-  // =============================
-  // Lightbox (GLightbox)
-  // =============================
-  if (typeof GLightbox !== "undefined") {
-    GLightbox({ selector: ".portfolio-lightbox" });
-
-    GLightbox({
-      selector: ".portfolio-details-lightbox",
-      width: "90%",
-      height: "90vh"
-    });
-  }
-
-  // =============================
-  // Typing Effect
-  // =============================
-  const texts = [
-    "Network Engineer",
-    "Network Security Engineer",
-    "Cyber Security Engineer",
-    "IoT Engineer"
-  ];
-
-  let textIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingStarted = false;
-
-  function typeEffect() {
-    const el = document.getElementById("profession");
-    if (!el) return;
-
-    const current = texts[textIndex];
-
-    if (!isDeleting) {
-      charIndex++;
-    } else {
-      charIndex--;
-    }
-
-    el.textContent = current.substring(0, charIndex);
-
-    let speed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === current.length) {
-      speed = 1500;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      textIndex = (textIndex + 1) % texts.length;
-      speed = 500;
-    }
-
-    setTimeout(typeEffect, speed);
-  }
-
-  window.addEventListener("load", () => {
-    if (!typingStarted) {
-      typingStarted = true;
-      typeEffect();
-    }
-  });
-
-  // =============================
-  // Counter
-  // =============================
-  if (typeof PureCounter !== "undefined") {
-    new PureCounter();
-  }
-
-  // =============================
-  // THEME SYSTEM (AUTO 06–18 LIGHT / 18–06 DARK + MANUAL OVERRIDE)
-  // =============================
-  const toggleBtn = document.getElementById("theme-toggle");
-
-  function updateToggleIcon(theme) {
-    if (!toggleBtn) return;
-
-    toggleBtn.innerHTML =
-      theme === "light"
-        ? '<i class="bi bi-sun"></i>'
-        : '<i class="bi bi-moon"></i>';
-  }
-
-  function getThemeByTime() {
-    const hour = new Date().getHours();
-    return hour >= 6 && hour < 18 ? "light" : "dark";
-  }
-
-  function applyTheme(theme, save = true) {
-    if (theme === "light") {
-      document.body.classList.add("light-mode");
-      updateToggleIcon("light");
-    } else {
-      document.body.classList.remove("light-mode");
-      updateToggleIcon("dark");
-    }
-
-    if (save) {
-      localStorage.setItem("theme", theme);
-    }
-  }
-
-  function initTheme() {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "light" || savedTheme === "dark") {
-      applyTheme(savedTheme, false);
-    } else {
-      applyTheme(getThemeByTime(), false);
-    }
-  }
-
-  function startAutoThemeWatcher() {
-    setInterval(() => {
-      const savedTheme = localStorage.getItem("theme");
-
-      // kalau user sudah manual override, jangan auto override
-      if (savedTheme) return;
-
-      applyTheme(getThemeByTime(), false);
-    }, 60 * 1000);
-  }
-
-  window.addEventListener("load", () => {
-    initTheme();
-    startAutoThemeWatcher();
-  });
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      const isLight = document.body.classList.contains("light-mode");
-      const newTheme = isLight ? "dark" : "light";
-
-      applyTheme(newTheme);
-    });
-  }
-
+	'use strict';
+
+	/**
+	 * Easy selector helper function
+	 */
+	const select = (el, all = false) => {
+		el = el.trim();
+		if (all) {
+			return [...document.querySelectorAll(el)];
+		} else {
+			return document.querySelector(el);
+		}
+	};
+
+	/**
+	 * Easy event listener function
+	 */
+	const on = (type, el, listener, all = false) => {
+		let selectEl = select(el, all);
+
+		if (selectEl) {
+			if (all) {
+				selectEl.forEach((e) => e.addEventListener(type, listener));
+			} else {
+				selectEl.addEventListener(type, listener);
+			}
+		}
+	};
+
+	/**
+	 * Scrolls to an element with header offset
+	 */
+	const scrollto = (el) => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
+	/**
+	 * Mobile nav toggle
+	 */
+	on('click', '.mobile-nav-toggle', function (e) {
+		select('#navbar').classList.toggle('navbar-mobile');
+		this.classList.toggle('bi-list');
+		this.classList.toggle('bi-x');
+	});
+
+	/**
+	 * Scrool with ofset on links with a class name .scrollto
+	 */
+	on(
+		'click',
+		'#navbar .nav-link',
+		function (e) {
+			let section = select(this.hash);
+			if (section) {
+				e.preventDefault();
+
+				let navbar = select('#navbar');
+				let header = select('#header');
+				let sections = select('section', true);
+				let navlinks = select('#navbar .nav-link', true);
+
+				navlinks.forEach((item) => {
+					item.classList.remove('active');
+				});
+
+				this.classList.add('active');
+
+				if (navbar.classList.contains('navbar-mobile')) {
+					navbar.classList.remove('navbar-mobile');
+					let navbarToggle = select('.mobile-nav-toggle');
+					navbarToggle.classList.toggle('bi-list');
+					navbarToggle.classList.toggle('bi-x');
+				}
+
+				if (this.hash == '#header') {
+					header.classList.remove('header-top');
+					sections.forEach((item) => {
+						item.classList.remove('section-show');
+					});
+					return;
+				}
+
+				if (!header.classList.contains('header-top')) {
+					header.classList.add('header-top');
+					setTimeout(function () {
+						sections.forEach((item) => {
+							item.classList.remove('section-show');
+						});
+						section.classList.add('section-show');
+					}, 350);
+				} else {
+					sections.forEach((item) => {
+						item.classList.remove('section-show');
+					});
+					section.classList.add('section-show');
+				}
+
+				scrollto(this.hash);
+			}
+		},
+		true
+	);
+
+	/**
+	 * Activate/show sections on load with hash links
+	 */
+	window.addEventListener('load', () => {
+		if (window.location.hash) {
+			let initial_nav = select(window.location.hash);
+
+			if (initial_nav) {
+				let header = select('#header');
+				let navlinks = select('#navbar .nav-link', true);
+
+				header.classList.add('header-top');
+
+				navlinks.forEach((item) => {
+					if (item.getAttribute('href') == window.location.hash) {
+						item.classList.add('active');
+					} else {
+						item.classList.remove('active');
+					}
+				});
+
+				setTimeout(function () {
+					initial_nav.classList.add('section-show');
+				}, 350);
+
+				scrollto(window.location.hash);
+			}
+		}
+	});
+
+	/**
+	 * Skills animation
+	 */
+	let skilsContent = select('.skills-content');
+	if (skilsContent) {
+		new Waypoint({
+			element: skilsContent,
+			offset: '80%',
+			handler: function (direction) {
+				let progress = select('.progress .progress-bar', true);
+				progress.forEach((el) => {
+					el.style.width = el.getAttribute('aria-valuenow') + '%';
+				});
+			},
+		});
+	}
+
+	/**
+	 * Testimonials slider
+	 */
+	new Swiper('.testimonials-slider', {
+		speed: 600,
+		loop: true,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		},
+		slidesPerView: 'auto',
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'bullets',
+			clickable: true,
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 1,
+				spaceBetween: 20,
+			},
+
+			1200: {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+		},
+	});
+
+	/**
+	 * Porfolio isotope and filter
+	 */
+	window.addEventListener('load', () => {
+		let portfolioContainer = select('.portfolio-container');
+		if (portfolioContainer) {
+			let portfolioIsotope = new Isotope(portfolioContainer, {
+				itemSelector: '.portfolio-item',
+				layoutMode: 'fitRows',
+			});
+
+			let portfolioFilters = select('#portfolio-flters li', true);
+
+			on(
+				'click',
+				'#portfolio-flters li',
+				function (e) {
+					e.preventDefault();
+					portfolioFilters.forEach(function (el) {
+						el.classList.remove('filter-active');
+					});
+					this.classList.add('filter-active');
+
+					portfolioIsotope.arrange({
+						filter: this.getAttribute('data-filter'),
+					});
+				},
+				true
+			);
+		}
+	});
+
+	/**
+	 * Initiate portfolio lightbox
+	 */
+	const portfolioLightbox = GLightbox({
+		selector: '.portfolio-lightbox',
+	});
+
+	/**
+	 * Initiate portfolio details lightbox
+	 */
+	const portfolioDetailsLightbox = GLightbox({
+		selector: '.portfolio-details-lightbox',
+		width: '90%',
+		height: '90vh',
+	});
+
+	const professions = [
+		'Network Engineer',
+		'Network Security Engineer',
+		'IoT Engineer',
+		'Cyber Security Engineer',
+	];
+	let professionIndex = 0;
+
+	function changeProfession() {
+		const professionSpan = document.getElementById('profession');
+		professionSpan.classList.remove('typing-animation');
+		const profession = professions[professionIndex];
+		const characters = profession.split('');
+		let index = 0;
+		let typedProfession = '';
+
+		const typingInterval = setInterval(() => {
+			if (index < characters.length) {
+				typedProfession += characters[index];
+				professionSpan.textContent = typedProfession;
+				index++;
+			} else {
+				clearInterval(typingInterval);
+				setTimeout(() => {
+					professionSpan.classList.add('typing-animation');
+					professionIndex = (professionIndex + 1) % professions.length;
+				}, 1000);
+			}
+		}, 100);
+	}
+
+	setInterval(changeProfession, 5000);
+
+	/**
+	 * Portfolio details slider
+	 */
+	new Swiper('.portfolio-details-slider', {
+		speed: 400,
+		loop: true,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'bullets',
+			clickable: true,
+		},
+	});
+
+	/**
+	 * Initiate Pure Counter
+	 */
+	new PureCounter();
 })();

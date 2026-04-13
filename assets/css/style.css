@@ -1,112 +1,18 @@
-:root {
-  /* ================= DARK MODE (DEFAULT - PREMIUM UI) ================= */
-  --white: rgb(255, 255, 255);
-  --black: rgb(0, 0, 0);
-  --dark: rgb(29, 29, 29);
+/**
+* Template Name: Personal
+* Updated: Sep 18 2023 with Bootstrap v5.3.2
+* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
 
-  /* ================= PRIMARY ================= */
-  --primary: rgb(24, 210, 110);
-  --primary-hover: rgb(21, 187, 98);
-  --primary-light: rgb(53, 232, 136);
-  --primary-lighter: rgb(99, 237, 163);
-  --primary-line: rgb(76, 235, 149);
-
-  /* ================= GRAYS ================= */
-  --gray-444: rgb(68, 68, 68);
-  --gray-999: rgb(153, 153, 153);
-  --gray-aaa: rgb(170, 170, 170);
-  --gray-eee: rgb(238, 238, 238);
-  --gray-204: rgba(204, 204, 204, 0.1);
-
-  /* ================= TRANSPARENCY SYSTEM ================= */
-  --white-05: rgba(255, 255, 255, 0.05);
-  --white-06: rgba(255, 255, 255, 0.06);
-  --white-08: rgba(255, 255, 255, 0.08);
-  --white-10: rgba(255, 255, 255, 0.1);
-  --white-11: rgba(255, 255, 255, 0.11);
-  --white-12: rgba(255, 255, 255, 0.12);
-  --white-15: rgba(255, 255, 255, 0.15);
-  --white-20: rgba(255, 255, 255, 0.2);
-  --white-25: rgba(255, 255, 255, 0.25);
-  --white-30: rgba(255, 255, 255, 0.3);
-  --white-50: rgba(255, 255, 255, 0.5);
-  --white-70: rgba(255, 255, 255, 0.7);
-  --white-80: rgba(255, 255, 255, 0.8);
-  --white-90: rgba(255, 255, 255, 0.9);
-
-  --black-60: rgba(0, 0, 0, 0.6);
-  --black-80: rgba(0, 0, 0, 0.8);
-  --black-90: rgba(0, 0, 0, 0.9);
-
-  --error: rgb(237, 60, 13);
-
-  /* ================= BACKGROUND SYSTEM ================= */
-  --bg-main: rgb(15, 17, 21);
-  --bg-card: rgba(255, 255, 255, 0.08);
-  --surface-bg: rgba(255, 255, 255, 0.06);
-  --soft-bg: rgba(255, 255, 255, 0.05);
-
-  /* ================= UI ================= */
-  --spinner-border-top: rgb(238, 238, 238);
-}
-
-body.light-mode {
-  /* ================= BASE ================= */
-  --white: #ffffff;
-  --black: #0b0f19;
-  --dark: #f6f7fb;
-
-  /* ================= PRIMARY ================= */
-  --primary: #16c766;
-  --primary-hover: #13b85c;
-  --primary-light: #35e888;
-  --primary-lighter: #63eda3;
-  --primary-line: #45e08f;
-
-  /* ================= GRAYS (SLATE MODERN SYSTEM) ================= */
-  --gray-444: #4b5563;
-  --gray-999: #6b7280;
-  --gray-aaa: #9ca3af;
-  --gray-eee: #eef2f7;
-
-  --gray-204: rgba(15, 23, 42, 0.06);
-
-  /* ================= TRANSPARENCY (LIGHT GLASS CLEAN UI) ================= */
-  --white-05: rgba(15, 23, 42, 0.02);
-  --white-06: rgba(15, 23, 42, 0.03);
-  --white-08: rgba(15, 23, 42, 0.04);
-  --white-10: rgba(15, 23, 42, 0.05);
-  --white-11: rgba(15, 23, 42, 0.06);
-  --white-12: rgba(15, 23, 42, 0.07);
-  --white-15: rgba(15, 23, 42, 0.08);
-  --white-20: rgba(15, 23, 42, 0.10);
-  --white-25: rgba(15, 23, 42, 0.12);
-  --white-30: rgba(15, 23, 42, 0.14);
-  --white-50: rgba(15, 23, 42, 0.20);
-  --white-70: rgba(15, 23, 42, 0.35);
-  --white-80: rgba(15, 23, 42, 0.50);
-  --white-90: rgba(15, 23, 42, 0.70);
-
-  --black-60: rgba(15, 23, 42, 0.55);
-  --black-80: rgba(15, 23, 42, 0.75);
-  --black-90: rgba(15, 23, 42, 0.88);
-
-  --error: #e11d48;
-
-  /* ================= BACKGROUND SYSTEM ================= */
-  --bg-main: #f5f7fb;
-  --bg-card: #ffffff;
-  --surface-bg: #ffffff;
-  --soft-bg: #f1f5f9;
-
-  /* ================= UI ================= */
-  --spinner-border-top: #111827;
-}
-
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #121418;
-  color: #f2f3f5;
+  background-color: #1d1d1d;
+  color: #ffffff;
   position: relative;
   background: transparent;
 }
@@ -114,7 +20,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #0e0f12 url("../img/bg.jpg") top right no-repeat;
+  background: #ffffff url("../img/bg.jpg") top right no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
@@ -130,12 +36,12 @@ body::before {
 }
 
 a {
-  color: #22c55e;
+  color: #18d26e;
   text-decoration: none;
 }
 
 a:hover {
-  color: #4ade80;
+  color: #18d26e;
   text-decoration: none;
 }
 
@@ -148,6 +54,9 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
 #header {
   transition: ease-in-out 0.3s;
   position: relative;
@@ -173,7 +82,7 @@ h6 {
 
 #header h1 a,
 #header h1 a:hover {
-  color: #ffffff;
+  color: #fff;
   line-height: 1;
   display: inline-block;
 }
@@ -181,12 +90,12 @@ h6 {
 #header h2 {
   font-size: 24px;
   margin-top: 20px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #header h2 span {
-  color: #ffffff;
-  border-bottom: 2px solid #22c55e;
+  color: #fff;
+  border-bottom: 2px solid #18d26e;
   padding-bottom: 6px;
 }
 
@@ -205,8 +114,8 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
   line-height: 1;
   margin-right: 8px;
   border-radius: 50%;
@@ -215,7 +124,7 @@ h6 {
 }
 
 #header .social-links a:hover {
-  background: #22c55e;
+  background: #18d26e;
 }
 
 @media (max-width: 992px) {
@@ -246,7 +155,7 @@ h6 {
   left: 0;
   top: 0;
   right: 0;
-  background: rgba(10, 11, 14, 0.92);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 #header.header-top .social-links,
@@ -283,10 +192,17 @@ h6 {
   }
 }
 
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
 .navbar {
   padding: 0;
   margin-top: 35px;
 }
+
 .navbar ul {
   margin: 0;
   padding: 0;
@@ -312,7 +228,7 @@ h6 {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -331,7 +247,7 @@ h6 {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #22c55e;
+  background-color: #18d26e;
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
@@ -348,11 +264,14 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #ffffff;
+  color: #fff;
 }
 
+/**
+* Mobile Navigation 
+*/
 .mobile-nav-toggle {
-  color: #ffffff;
+  color: #fff;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -380,7 +299,7 @@ h6 {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(10, 11, 14, 0.96);
+  background: rgba(0, 0, 0, 0.9);
   transition: 0.3s;
   z-index: 999;
   margin-top: 0;
@@ -402,7 +321,7 @@ h6 {
   padding: 10px 0;
   overflow-y: auto;
   transition: 0.3s;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .navbar-mobile li {
@@ -419,6 +338,9 @@ h6 {
   position: relative;
 }
 
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
 section {
   overflow: hidden;
   position: absolute;
@@ -438,7 +360,7 @@ section.section-show {
 }
 
 section .container {
-  background: rgba(10, 11, 14, 0.92);
+  background: rgba(0, 0, 0, 0.9);
   padding: 30px;
 }
 
@@ -451,6 +373,7 @@ section .container {
     top: 80px;
   }
 }
+
 .section-title h2 {
   font-size: 14px;
   font-weight: 500;
@@ -459,7 +382,7 @@ section .container {
   margin: 0 0 20px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: #aaaaaa;
   font-family: "Poppins", sans-serif;
 }
 
@@ -468,7 +391,7 @@ section .container {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #34d399;
+  background: #4ceb95;
   margin: 4px 10px;
 }
 
@@ -479,13 +402,16 @@ section .container {
   font-weight: 700;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #f5f5f5;
+  color: #fff;
 }
 
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
 .about-me .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #34d399;
+  color: #18d26e;
 }
 
 .about-me .content ul {
@@ -506,7 +432,7 @@ section .container {
 .about-me .content ul i {
   font-size: 16px;
   margin-right: 5px;
-  color: #34d399;
+  color: #18d26e;
   line-height: 0;
 }
 
@@ -514,6 +440,9 @@ section .container {
   margin-bottom: 0;
 }
 
+/*--------------------------------------------------------------
+# Counts
+--------------------------------------------------------------*/
 .counts {
   padding: 70px 0 60px;
 }
@@ -523,7 +452,7 @@ section .container {
   width: 100%;
   position: relative;
   text-align: center;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .counts .count-box i {
@@ -532,9 +461,9 @@ section .container {
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   padding: 12px;
-  color: #34d399;
+  color: #18d26e;
   border-radius: 50px;
   line-height: 0;
 }
@@ -543,7 +472,7 @@ section .container {
   font-size: 36px;
   display: block;
   font-weight: 600;
-  color: #f5f5f5;
+  color: #fff;
 }
 
 .counts .count-box p {
@@ -551,9 +480,11 @@ section .container {
   margin: 0;
   font-family: "Raleway", sans-serif;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
 }
 
+/*--------------------------------------------------------------
+# Skills
+--------------------------------------------------------------*/
 .skills .progress {
   height: 60px;
   display: block;
@@ -568,31 +499,33 @@ section .container {
   display: block;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  color: #f5f5f5;
+  color: #fff;
 }
 
 .skills .progress .skill .val {
   float: right;
   font-style: normal;
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .skills .progress-bar-wrap {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .skills .progress-bar {
   width: 1px;
   height: 10px;
   transition: 0.9s;
-  background-color: #34d399;
+  background-color: #18d26e;
 }
 
+/*--------------------------------------------------------------
+# Interests
+--------------------------------------------------------------*/
 .interests .icon-box {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   transition: ease-in-out 0.3s;
 }
 
@@ -600,7 +533,6 @@ section .container {
   font-size: 32px;
   padding-right: 10px;
   line-height: 1;
-  color: #34d399;
 }
 
 .interests .icon-box h3 {
@@ -609,13 +541,16 @@ section .container {
   padding: 0;
   line-height: 1;
   font-size: 16px;
-  color: #f5f5f5;
+  color: #fff;
 }
 
 .interests .icon-box:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
+/*--------------------------------------------------------------
+# Testimonials
+--------------------------------------------------------------*/
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
@@ -632,19 +567,19 @@ section .container {
   margin: -40px 0 0 40px;
   position: relative;
   z-index: 2;
-  border: 6px solid rgba(255, 255, 255, 0.1);
+  border: 6px solid rgba(255, 255, 255, 0.12);
 }
 
 .testimonials .testimonial-item h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0 5px 45px;
-  color: #f5f5f5;
+  color: #fff;
 }
 
 .testimonials .testimonial-item h4 {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #999;
   margin: 0 0 0 45px;
 }
 
@@ -654,39 +589,61 @@ section .container {
   font-size: 26px;
 }
 
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+}
+
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 0 15px 0 15px;
   padding: 20px 20px 60px 20px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.1);
   position: relative;
   border-radius: 6px;
+  position: relative;
   z-index: 1;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #34d399;
+  background-color: #18d26e;
 }
 
+/*--------------------------------------------------------------
+# Resume
+--------------------------------------------------------------*/
 .resume .resume-title {
   font-size: 26px;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #f5f5f5;
+  color: #fff;
 }
 
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
   position: relative;
 }
 
@@ -696,23 +653,29 @@ section .container {
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #34d399;
+  color: #18d26e;
   margin-bottom: 10px;
 }
 
 .resume .resume-item h5 {
   font-size: 16px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.15);
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.8);
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
 }
 
 .resume .resume-item ul li {
   padding-bottom: 10px;
-  color: rgba(255, 255, 255, 0.75);
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
 }
 
 .resume .resume-item::before {
@@ -723,13 +686,16 @@ section .container {
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background: var(--primary);
-  border: 2px solid var(--primary);
+  background: #18d26e;
+  border: 2px solid #18d26e;
 }
 
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  background: var(--white-10);
+  background: rgba(204, 204, 204, 0.1);
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
 }
@@ -738,7 +704,7 @@ section .container {
   margin: 0 auto;
   width: 64px;
   height: 64px;
-  background: var(--primary);
+  background: #18d26e;
   border-radius: 5px;
   transition: all 0.3s ease-out 0s;
   display: flex;
@@ -749,7 +715,7 @@ section .container {
 }
 
 .services .icon-box .icon i {
-  color: var(--white);
+  color: #fff;
   font-size: 28px;
 }
 
@@ -760,44 +726,64 @@ section .container {
   top: -8px;
   height: 100%;
   width: 100%;
-  background: var(--white-15);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
   transition: all 0.3s ease-out 0s;
   transform: translateZ(-1px);
 }
 
+.services .icon-box h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 27px;
+}
+
 .services .icon-box h4 a {
-  color: var(--white);
+  color: #fff;
 }
 
 .services .icon-box p {
-  color: var(--white-80);
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
 }
 
 .services .icon-box:hover {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: #18d26e;
+  border-color: #18d26e;
 }
 
 .services .icon-box:hover .icon {
-  background: var(--white);
+  background: #fff;
 }
 
 .services .icon-box:hover .icon i {
-  color: var(--primary);
+  color: #18d26e;
 }
 
 .services .icon-box:hover .icon::before {
-  background: var(--primary-light);
+  background: #35e888;
 }
 
 .services .icon-box:hover h4 a,
 .services .icon-box:hover p {
-  color: var(--white);
+  color: #fff;
 }
 
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
 .portfolio .portfolio-item {
   margin-bottom: 30px;
+}
+
+.portfolio #portfolio-flters {
+  padding: 0;
+  margin: 0 auto 15px auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+  padding: 2px 15px;
 }
 
 .portfolio #portfolio-flters li {
@@ -808,8 +794,8 @@ section .container {
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-  color: var(--white);
-  background: var(--white-10);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   margin: 0 3px 10px 3px;
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
@@ -817,7 +803,11 @@ section .container {
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  background: var(--primary);
+  background: #18d26e;
+}
+
+.portfolio #portfolio-flters li:last-child {
+  margin-right: 0;
 }
 
 .portfolio .portfolio-wrap {
@@ -825,12 +815,12 @@ section .container {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: var(--black-60);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: var(--black-80);
+  background: rgba(0, 0, 0, 0.6);
   position: absolute;
   left: 30px;
   right: 30px;
@@ -865,8 +855,8 @@ section .container {
   position: absolute;
   top: 35px;
   left: 35px;
-  border-top: 3px solid var(--white);
-  border-left: 3px solid var(--white);
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
   transition: all 0.5s ease 0s;
   z-index: 9994;
 }
@@ -879,20 +869,20 @@ section .container {
   position: absolute;
   bottom: 35px;
   right: 35px;
-  border-bottom: 3px solid var(--white);
-  border-right: 3px solid var(--white);
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
   transition: all 0.5s ease 0s;
   z-index: 9994;
 }
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
   font-size: 20px;
-  color: var(--white);
+  color: #fff;
   font-weight: 600;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: var(--white-80);
+  color: #ffffff;
   font-size: 14px;
   text-transform: uppercase;
   padding: 0;
@@ -905,14 +895,15 @@ section .container {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: var(--white);
+  color: #fff;
   margin: 0 2px;
   font-size: 28px;
   display: inline-block;
   transition: 0.3s;
 }
+
 .portfolio .portfolio-wrap .portfolio-links a:hover {
-  color: var(--primary-lighter);
+  color: #63eda3;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -937,9 +928,12 @@ section .container {
   right: 15px;
 }
 
+/*--------------------------------------------------------------
+# Portfolio Details
+--------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
-  background: var(--black-80);
+  background: rgba(0, 0, 0, 0.8);
   position: fixed;
   left: 0;
   right: 0;
@@ -954,73 +948,144 @@ section .container {
 }
 
 .portfolio-details .portfolio-title {
-  color: var(--white);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-info {
+  padding-top: 45px;
 }
 
 .portfolio-details .portfolio-info h3 {
-  color: var(--white);
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
 .portfolio-details .portfolio-info ul {
-  color: var(--white-80);
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li+li {
+  margin-top: 10px;
 }
 
 .portfolio-details .portfolio-info p {
-  color: var(--white-80);
+  font-size: 15px;
+  padding: 15px 0 0 0;
+}
+
+@media (max-width: 992px) {
+  .portfolio-details .portfolio-info {
+    padding-top: 20px;
+  }
+}
+
+.portfolio-details .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
 }
 
 .portfolio-details .swiper-pagination .swiper-pagination-bullet {
-  background-color: var(--white-30);
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .portfolio-details .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--primary);
+  background-color: #18d26e;
 }
 
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
 .contact .info-box {
-  color: var(--white-80);
-  background: var(--white-08);
+  color: #444444;
+  padding: 20px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .contact .info-box i.bx {
-  color: var(--primary);
-  background: var(--white-10);
+  font-size: 24px;
+  color: #18d26e;
+  border-radius: 50%;
+  padding: 14px;
+  float: left;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .contact .info-box h3 {
-  color: var(--white-50);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+  margin: 10px 0 8px 68px;
 }
 
 .contact .info-box p {
-  color: var(--white);
+  padding: 0;
+  color: #fff;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 0 0 0 68px;
+}
+
+.contact .info-box .social-links {
+  margin: 5px 0 0 68px;
+  display: flex;
 }
 
 .contact .info-box .social-links a {
-  color: var(--white);
+  font-size: 18px;
+  display: inline-block;
+  color: #fff;
+  line-height: 1;
+  margin-right: 12px;
+  transition: 0.3s;
 }
 
 .contact .info-box .social-links a:hover {
-  color: var(--primary);
+  color: #18d26e;
 }
 
 .contact .php-email-form {
-  background: var(--white-08);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .contact .php-email-form .error-message {
-  background: var(--error);
-  color: var(--white);
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .error-message br+br {
+  margin-top: 25px;
 }
 
 .contact .php-email-form .sent-message {
-  background: var(--primary);
-  color: var(--white);
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
 }
 
 .contact .php-email-form .loading {
-  background: var(--white-08);
-  color: var(--white);
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  padding: 15px;
 }
+
 .contact .php-email-form .loading:before {
   content: "";
   display: inline-block;
@@ -1028,8 +1093,8 @@ section .container {
   width: 24px;
   height: 24px;
   margin: 0 10px -6px 0;
-  border: 3px solid var(--primary);
-  border-top-color: var(--gray-eee);
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
   animation: animate-loading 1s linear infinite;
 }
 
@@ -1038,42 +1103,63 @@ section .container {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
-  background: var(--white-08);
+  background: rgba(255, 255, 255, 0.08);
   border: 0;
   transition: 0.3s;
-  color: var(--white);
+  color: #fff;
 }
 
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-  background-color: var(--white-11);
+  background-color: rgba(255, 255, 255, 0.11);
 }
 
 .contact .php-email-form input::-moz-placeholder,
 .contact .php-email-form textarea::-moz-placeholder {
-  color: var(--white-30);
+  color: rgba(255, 255, 255, 0.3);
   opacity: 1;
 }
 
 .contact .php-email-form input::placeholder,
 .contact .php-email-form textarea::placeholder {
-  color: var(--white-30);
+  color: rgba(255, 255, 255, 0.3);
   opacity: 1;
 }
 
+.contact .php-email-form input {
+  padding: 10px 15px;
+}
+
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+
 .contact .php-email-form button[type=submit] {
-  background: var(--primary);
+  background: #18d26e;
   border: 0;
   padding: 10px 30px;
-  color: var(--white);
+  color: #fff;
   transition: 0.4s;
   border-radius: 4px;
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: var(--primary-hover);
+  background: #15bb62;
 }
 
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Credits
+--------------------------------------------------------------*/
 .credits {
   position: fixed;
   right: 0;
@@ -1082,7 +1168,7 @@ section .container {
   padding: 15px;
   text-align: right;
   font-size: 13px;
-  color: var(--white);
+  color: #fff;
   z-index: 999999;
 }
 
@@ -1090,40 +1176,40 @@ section .container {
   .credits {
     text-align: center;
     padding: 10px;
-    background: var(--black-80);
+    background: rgba(0, 0, 0, 0.8);
   }
 }
 
 .credits a {
-  color: var(--primary);
+  color: #18d26e;
   transition: 0.3s;
 }
 
 .credits a:hover {
-  color: var(--white);
+  color: #fff;
 }
 
-/* typing */
 #name {
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 4s steps(20, end) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(20, end) infinite;
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+    from { width: 0; }
+    to { width: 100%; }
 }
 
+/* CSS untuk animasi mengetik pada profesi */
 #profession.typing-animation {
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typingProfession 2s steps(20, end) forwards;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typingProfession 2s steps(20, end) forwards;
 }
 
 @keyframes typingProfession {
-  from { width: 0; }
-  to { width: 100%; }
+    from { width: 0; }
+    to { width: 100%; }
 }
