@@ -272,3 +272,30 @@
   }
 
 })();
+
+// =============================
+// Dark / Light Mode Toggle
+// =============================
+const toggleBtn = document.getElementById("theme-toggle");
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    // Simpan ke localStorage
+    if (document.body.classList.contains("light-mode")) {
+      localStorage.setItem("theme", "light");
+      toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
+    } else {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.innerHTML = '<i class="bi bi-moon"></i>';
+    }
+  });
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
+  }
+}
