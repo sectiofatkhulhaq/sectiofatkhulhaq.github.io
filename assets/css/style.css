@@ -1,16 +1,16 @@
 :root {
   /* ================= DARK MODE ================= */
-  --bg-main: #0f1115;
+  --bg-main: rgb(15, 17, 21);
 
   --surface-bg: rgba(255, 255, 255, 0.06);
   --bg-card: rgba(255, 255, 255, 0.08);
   --soft-bg: rgba(255, 255, 255, 0.05);
 
-  --text-main: #ffffff;
+  --text-main: rgb(255, 255, 255);
   --text-secondary: rgba(255, 255, 255, 0.72);
 
-  --primary: #18d26e;        /* hijau utama */
-  --primary-hover: #12b85e;
+  --primary: rgb(24, 210, 110);
+  --primary-hover: rgb(18, 184, 94);
 
   --border-color: rgba(255, 255, 255, 0.12);
   --hover-bg: rgba(255, 255, 255, 0.10);
@@ -23,29 +23,25 @@
 
 body.light-mode {
   /* ================= LIGHT MODE (GREEN + BLACK INVERTED THEME) ================= */
+  --bg-main: rgb(24, 210, 110);
 
-  --bg-main: #f6fff9; /* tetap putih tapi ada hint hijau */
+  --surface-bg: rgba(24, 210, 110, 0.06);
+  --bg-card: rgba(24, 210, 110, 0.08);
+  --soft-bg: rgba(24, 210, 110, 0.05);
 
-  --surface-bg: rgba(15, 17, 21, 0.04);
-  --bg-card: rgba(15, 17, 21, 0.06);
-  --soft-bg: rgba(15, 17, 21, 0.03);
+  --text-main: rgb(0, 0, 0);
+  --text-secondary: rgba(0, 0, 0, 0.72);
 
-  --text-main: #0f1115;
-  --text-secondary: rgba(15, 17, 21, 0.75);
+  --primary: rgb(24, 210, 110);
+  --primary-hover: rgb(18, 184, 94);
 
-  /* INI KUNCINYA: kebalik */
-  --primary: #0f1115;        /* hitam jadi accent */
-  --primary-hover: #000000;
+  --border-color: rgba(24, 210, 110, 0.12);
+  --hover-bg: rgba(24, 210, 110, 0.10);
 
-  --border-color: rgba(15, 17, 21, 0.12);
-  --hover-bg: rgba(15, 17, 21, 0.06);
+  --shadow: 0 12px 35px rgba(24, 210, 110, 0.45);
 
-  --shadow:
-    0 2px 6px rgba(0, 0, 0, 0.06),
-    0 10px 25px rgba(0, 0, 0, 0.08);
-
-  --muted-strong: rgba(15, 17, 21, 0.6);
-  --muted-weak: rgba(15, 17, 21, 0.35);
+  --muted-strong: rgba(24, 210, 110, 0.6);
+  --muted-weak: rgba(24, 210, 110, 0.35);
 }
 
 body {
