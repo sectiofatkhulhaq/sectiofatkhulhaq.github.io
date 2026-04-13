@@ -116,7 +116,8 @@ h6 {
 #header {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* FIX: dari center → ke atas */
+  padding-top: 120px;      /* kasih jarak dari atas */
   position: relative;
   overflow: hidden;
 }
