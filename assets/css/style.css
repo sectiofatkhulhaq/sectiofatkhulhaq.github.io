@@ -2,49 +2,47 @@
   /* ================= DARK MODE ================= */
 
   --bg-main: #0f1115;
-  --bg-overlay: rgba(0, 0, 0, 0.65);
+  --bg-overlay: transparent;
 
   --surface-bg: rgba(255, 255, 255, 0.06);
-  --bg-card: rgba(255, 255, 255, 0.09);
+  --bg-card: rgba(255, 255, 255, 0.08);
   --soft-bg: rgba(255, 255, 255, 0.05);
 
   --text-main: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-secondary: rgba(255, 255, 255, 0.72);
   --placeholder: rgba(255, 255, 255, 0.35);
 
   --primary: #18d26e;
-  --primary-hover: #14b85f;
+  --primary-hover: #12b85e;
 
   --border-color: rgba(255, 255, 255, 0.12);
   --hover-bg: rgba(255, 255, 255, 0.12);
 
   --danger: #ff4d3d;
 
-  --shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-
-  --bg-image: url("../img/bg.jpg");
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
-/* ================= LIGHT MODE (FIXED CONTRAST) ================= */
+/* ================= LIGHT MODE ================= */
 
 body.light-mode {
-  --bg-main: #f5f7fb;
-  --bg-overlay: rgba(245, 247, 251, 0.85);
+  --bg-main: #f6f7fb;
+  --bg-overlay: transparent;
 
-  /* 🔥 IMPORTANT FIX: jangan terlalu transparan */
-  --surface-bg: rgba(255, 255, 255, 0.92);
-  --bg-card: rgba(255, 255, 255, 0.98);
+  /* FIX: jangan terlalu transparan */
+  --surface-bg: #ffffff;
+  --bg-card: #ffffff;
   --soft-bg: rgba(0, 0, 0, 0.04);
 
   --text-main: #111827;
   --text-secondary: rgba(17, 24, 39, 0.7);
-  --placeholder: rgba(17, 24, 39, 0.4);
+  --placeholder: rgba(17, 24, 39, 0.45);
 
   --primary: #16c96a;
   --primary-hover: #12a85a;
 
   --border-color: rgba(0, 0, 0, 0.08);
-  --hover-bg: rgba(0, 0, 0, 0.05);
+  --hover-bg: rgba(0, 0, 0, 0.06);
 
   --danger: #e53935;
 
@@ -62,7 +60,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  /* background: var(--bg-overlay) url("../img/bg.jpg") top right no-repeat; */
+  background: none;
   background-size: cover;
   left: 0;
   right: 0;
