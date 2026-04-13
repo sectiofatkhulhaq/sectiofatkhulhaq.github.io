@@ -1,7 +1,6 @@
 :root {
   /* ================= DARK MODE ================= */
   --bg-main: #0f1115;
-  --bg-overlay: transparent;
 
   --surface-bg: rgba(255, 255, 255, 0.06);
   --bg-card: rgba(255, 255, 255, 0.08);
@@ -9,53 +8,44 @@
 
   --text-main: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.72);
-  --placeholder: rgba(255, 255, 255, 0.35);
 
-  --primary: #18d26e;
+  --primary: #18d26e;        /* hijau utama */
   --primary-hover: #12b85e;
 
   --border-color: rgba(255, 255, 255, 0.12);
-  --hover-bg: rgba(255, 255, 255, 0.12);
-
-  --danger: #ff4d3d;
+  --hover-bg: rgba(255, 255, 255, 0.10);
 
   --shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 
-  --surface-hover: rgba(255, 255, 255, 0.12);
---surface-border-soft: rgba(255, 255, 255, 0.18);
---muted-strong: rgba(255, 255, 255, 0.6);
---muted-weak: rgba(255, 255, 255, 0.35);
+  --muted-strong: rgba(255, 255, 255, 0.6);
+  --muted-weak: rgba(255, 255, 255, 0.35);
 }
 
 body.light-mode {
-  /* ================= LIGHT MODE (FIXED DEPTH) ================= */
-  --bg-main: #f4f6fb;
-  --bg-overlay: transparent;
+  /* ================= LIGHT MODE (GREEN + BLACK INVERTED THEME) ================= */
 
-  --surface-bg: #ffffff;
-  --bg-card: #ffffff;
-  --soft-bg: rgba(17, 24, 39, 0.04);
+  --bg-main: #f6fff9; /* tetap putih tapi ada hint hijau */
 
-  --text-main: #111827;
-  --text-secondary: rgba(17, 24, 39, 0.75);
-  --placeholder: rgba(17, 24, 39, 0.45);
+  --surface-bg: rgba(15, 17, 21, 0.04);
+  --bg-card: rgba(15, 17, 21, 0.06);
+  --soft-bg: rgba(15, 17, 21, 0.03);
 
-  --primary: #16c96a;
-  --primary-hover: #12a85a;
+  --text-main: #0f1115;
+  --text-secondary: rgba(15, 17, 21, 0.75);
 
-  --border-color: rgba(17, 24, 39, 0.10);
-  --hover-bg: rgba(17, 24, 39, 0.06);
+  /* INI KUNCINYA: kebalik */
+  --primary: #0f1115;        /* hitam jadi accent */
+  --primary-hover: #000000;
 
-  --danger: #e53935;
+  --border-color: rgba(15, 17, 21, 0.12);
+  --hover-bg: rgba(15, 17, 21, 0.06);
 
   --shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    0 8px 24px rgba(0, 0, 0, 0.08);
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 10px 25px rgba(0, 0, 0, 0.08);
 
-    --surface-hover: rgba(17, 24, 39, 0.06);
---surface-border-soft: rgba(17, 24, 39, 0.12);
---muted-strong: rgba(17, 24, 39, 0.6);
---muted-weak: rgba(17, 24, 39, 0.4);
+  --muted-strong: rgba(15, 17, 21, 0.6);
+  --muted-weak: rgba(15, 17, 21, 0.35);
 }
 
 body {
