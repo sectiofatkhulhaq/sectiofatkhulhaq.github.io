@@ -45,7 +45,12 @@ body.light-mode {
   --bg-image: url("../img/bg.jpg");
 }
 
-body, a, button, .navbar a, .icon-box, .count-box {
+body, a, button, .navbar a,
+.icon-box, .count-box,
+.services .icon-box,
+.interests .icon-box,
+.portfolio .portfolio-wrap,
+.contact .info-box {
   transition: background-color 0.3s ease,
               color 0.3s ease,
               border-color 0.3s ease,
@@ -53,9 +58,8 @@ body, a, button, .navbar a, .icon-box, .count-box {
 }
 
 html, body {
-  height: auto;
+  height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 body {
@@ -63,21 +67,22 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  will-change: background-color;
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+
   background-image:
     linear-gradient(var(--bg-overlay), var(--bg-overlay)),
     var(--bg-image);
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -2;
+
+  z-index: -1;
 }
 
 @media (min-width: 1024px) {
@@ -110,12 +115,10 @@ h6 {
 --------------------------------------------------------------*/
 #header {
   min-height: 100vh;
-  z-index: 10;
-  position: relative;
-  height: 100vh;
   display: flex;
   align-items: center;
-  overflow-y: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 #header h1 {
@@ -203,6 +206,7 @@ h6 {
   top: 0;
   right: 0;
   background: var(--bg-overlay);
+  z-index: 9999;
 }
 
 #header.header-top .social-links,
@@ -341,15 +345,9 @@ h6 {
 
 .navbar-mobile {
   position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  inset: 0;
+  z-index: 9999;
   background: var(--bg-overlay);
-  
-  z-index: 999;
-  margin-top: 0;
 }
 
 .navbar-mobile .mobile-nav-toggle {
@@ -389,39 +387,47 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  display: none;
-  transform: translateY(10px);
-  position: absolute;
-  top: 100vh;
-  left: 0;
+  position: fixed;
+  inset: 0;
+
   width: 100%;
+  min-height: 100vh;
+
   opacity: 0;
-  transition: 0.4s ease;
+  visibility: hidden;
+  transform: translateY(20px);
+
+  pointer-events: none;
+
+  transition: all 0.4s ease;
+
   z-index: 5;
+
+  overflow-y: auto;
+  padding-top: 80px;
+  will-change: transform, opacity;
 }
 
 section.section-show {
-  display: block;
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
-  top: 80px;
-  opacity: 1;
+  z-index: 10;
 }
 
 section .container {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
   padding: 30px;
+  border-radius: 12px;
+  margin-top: 20px;
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @media (max-width: 768px) {
   section {
-    top: 120px;
-  }
-
-  section.section-show {
-    top: 80px;
+    padding-top: 70px;
   }
 }
 
@@ -748,7 +754,7 @@ section .container {
   text-align: center;
   background: var(--soft-bg);
   padding: 80px 20px;
-  transition: all ease-in-out 0.3s;
+  transition: all 0.3s ease;
 }
 
 .services .icon-box .icon {
@@ -878,7 +884,7 @@ section .container {
   right: 30px;
   top: 30px;
   bottom: 30px;
-  transition: all ease-in-out 0.3s;
+  transition: all 0.3s ease;
   z-index: 2;
   opacity: 0;
 }
