@@ -1,18 +1,24 @@
 :root {
-  /* ================= DARK MODE (DEFAULT) ================= */
-  --white: #ffffff;
-  --black: #000000;
-  --dark: #1d1d1d;
-  --primary: #18d26e;
-  --primary-hover: #15bb62;
-  --primary-light: #35e888;
-  --primary-lighter: #63eda3;
-  --primary-line: #4ceb95;
-  --gray-444: #444444;
-  --gray-999: #999999;
-  --gray-aaa: #aaaaaa;
-  --gray-eee: #eeeeee;
+  /* ================= DARK MODE (DEFAULT - PREMIUM UI) ================= */
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --dark: rgb(29, 29, 29);
+
+  /* ================= PRIMARY ================= */
+  --primary: rgb(24, 210, 110);
+  --primary-hover: rgb(21, 187, 98);
+  --primary-light: rgb(53, 232, 136);
+  --primary-lighter: rgb(99, 237, 163);
+  --primary-line: rgb(76, 235, 149);
+
+  /* ================= GRAYS ================= */
+  --gray-444: rgb(68, 68, 68);
+  --gray-999: rgb(153, 153, 153);
+  --gray-aaa: rgb(170, 170, 170);
+  --gray-eee: rgb(238, 238, 238);
   --gray-204: rgba(204, 204, 204, 0.1);
+
+  /* ================= TRANSPARENCY SYSTEM ================= */
   --white-05: rgba(255, 255, 255, 0.05);
   --white-06: rgba(255, 255, 255, 0.06);
   --white-08: rgba(255, 255, 255, 0.08);
@@ -27,55 +33,76 @@
   --white-70: rgba(255, 255, 255, 0.7);
   --white-80: rgba(255, 255, 255, 0.8);
   --white-90: rgba(255, 255, 255, 0.9);
+
   --black-60: rgba(0, 0, 0, 0.6);
   --black-80: rgba(0, 0, 0, 0.8);
   --black-90: rgba(0, 0, 0, 0.9);
-  --error: #ed3c0d;
-  --bg-main: #0f1115;
+
+  --error: rgb(237, 60, 13);
+
+  /* ================= BACKGROUND SYSTEM ================= */
+  --bg-main: rgb(15, 17, 21);
   --bg-card: rgba(255, 255, 255, 0.08);
   --surface-bg: rgba(255, 255, 255, 0.06);
   --soft-bg: rgba(255, 255, 255, 0.05);
-  --spinner-border-top: #eeeeee;
+
+  /* ================= UI ================= */
+  --spinner-border-top: rgb(238, 238, 238);
 }
 
-/* ================= LIGHT MODE OVERRIDE ================= */
 body.light-mode {
+  /* ================= BASE ================= */
   --white: #ffffff;
-  --black: #000000;
-  --dark: #f7f7f7;
-  --primary: #18d26e;
-  --primary-hover: #15bb62;
+  --black: #0b0f19;
+  --dark: #f6f7fb;
+
+  /* ================= PRIMARY ================= */
+  --primary: #16c766;
+  --primary-hover: #13b85c;
   --primary-light: #35e888;
   --primary-lighter: #63eda3;
-  --primary-line: #4ceb95;
-  --gray-444: #555555;
-  --gray-999: #666666;
-  --gray-aaa: #888888;
-  --gray-eee: #f2f2f2;
-  --gray-204: rgba(0, 0, 0, 0.06);
-  --white-05: rgba(0, 0, 0, 0.03);
-  --white-06: rgba(0, 0, 0, 0.04);
-  --white-08: rgba(0, 0, 0, 0.05);
-  --white-10: rgba(0, 0, 0, 0.06);
-  --white-11: rgba(0, 0, 0, 0.07);
-  --white-12: rgba(0, 0, 0, 0.08);
-  --white-15: rgba(0, 0, 0, 0.1);
-  --white-20: rgba(0, 0, 0, 0.12);
-  --white-25: rgba(0, 0, 0, 0.15);
-  --white-30: rgba(0, 0, 0, 0.18);
-  --white-50: rgba(0, 0, 0, 0.25);
-  --white-70: rgba(0, 0, 0, 0.4);
-  --white-80: rgba(0, 0, 0, 0.6);
-  --white-90: rgba(0, 0, 0, 0.75);
-  --black-60: rgba(0, 0, 0, 0.45);
-  --black-80: rgba(0, 0, 0, 0.65);
-  --black-90: rgba(0, 0, 0, 0.8);
-  --bg-main: #ffffff;
-  --bg-card: #f8f9fa;
+  --primary-line: #45e08f;
+
+  /* ================= GRAYS (SLATE MODERN SYSTEM) ================= */
+  --gray-444: #4b5563;
+  --gray-999: #6b7280;
+  --gray-aaa: #9ca3af;
+  --gray-eee: #eef2f7;
+
+  --gray-204: rgba(15, 23, 42, 0.06);
+
+  /* ================= TRANSPARENCY (LIGHT GLASS CLEAN UI) ================= */
+  --white-05: rgba(15, 23, 42, 0.02);
+  --white-06: rgba(15, 23, 42, 0.03);
+  --white-08: rgba(15, 23, 42, 0.04);
+  --white-10: rgba(15, 23, 42, 0.05);
+  --white-11: rgba(15, 23, 42, 0.06);
+  --white-12: rgba(15, 23, 42, 0.07);
+  --white-15: rgba(15, 23, 42, 0.08);
+  --white-20: rgba(15, 23, 42, 0.10);
+  --white-25: rgba(15, 23, 42, 0.12);
+  --white-30: rgba(15, 23, 42, 0.14);
+  --white-50: rgba(15, 23, 42, 0.20);
+  --white-70: rgba(15, 23, 42, 0.35);
+  --white-80: rgba(15, 23, 42, 0.50);
+  --white-90: rgba(15, 23, 42, 0.70);
+
+  --black-60: rgba(15, 23, 42, 0.55);
+  --black-80: rgba(15, 23, 42, 0.75);
+  --black-90: rgba(15, 23, 42, 0.88);
+
+  --error: #e11d48;
+
+  /* ================= BACKGROUND SYSTEM ================= */
+  --bg-main: #f5f7fb;
+  --bg-card: #ffffff;
   --surface-bg: #ffffff;
-  --soft-bg: #f3f3f3;
-  --spinner-border-top: #444444;
+  --soft-bg: #f1f5f9;
+
+  /* ================= UI ================= */
+  --spinner-border-top: #111827;
 }
+
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #121418;
