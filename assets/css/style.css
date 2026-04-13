@@ -1,6 +1,5 @@
 :root {
   /* ================= DARK MODE ================= */
-
   --bg-main: #0f1115;
   --bg-overlay: transparent;
 
@@ -21,32 +20,42 @@
   --danger: #ff4d3d;
 
   --shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+
+  --surface-hover: rgba(255, 255, 255, 0.12);
+--surface-border-soft: rgba(255, 255, 255, 0.18);
+--muted-strong: rgba(255, 255, 255, 0.6);
+--muted-weak: rgba(255, 255, 255, 0.35);
 }
 
-/* ================= LIGHT MODE ================= */
-
 body.light-mode {
-  --bg-main: #f6f7fb;
+  /* ================= LIGHT MODE (FIXED DEPTH) ================= */
+  --bg-main: #f4f6fb;
   --bg-overlay: transparent;
 
-  /* FIX: jangan terlalu transparan */
   --surface-bg: #ffffff;
   --bg-card: #ffffff;
-  --soft-bg: rgba(0, 0, 0, 0.04);
+  --soft-bg: rgba(17, 24, 39, 0.04);
 
   --text-main: #111827;
-  --text-secondary: rgba(17, 24, 39, 0.7);
+  --text-secondary: rgba(17, 24, 39, 0.75);
   --placeholder: rgba(17, 24, 39, 0.45);
 
   --primary: #16c96a;
   --primary-hover: #12a85a;
 
-  --border-color: rgba(0, 0, 0, 0.08);
-  --hover-bg: rgba(0, 0, 0, 0.06);
+  --border-color: rgba(17, 24, 39, 0.10);
+  --hover-bg: rgba(17, 24, 39, 0.06);
 
   --danger: #e53935;
 
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+
+    --surface-hover: rgba(17, 24, 39, 0.06);
+--surface-border-soft: rgba(17, 24, 39, 0.12);
+--muted-strong: rgba(17, 24, 39, 0.6);
+--muted-weak: rgba(17, 24, 39, 0.4);
 }
 
 body {
@@ -54,7 +63,6 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   position: relative;
-  background: transparent;
 }
 
 body::before {
@@ -361,7 +369,7 @@ h6 {
   padding: 10px 0;
   overflow-y: auto;
   transition: 0.3s;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--surface-border-soft);
 }
 
 .navbar-mobile li {
@@ -492,7 +500,7 @@ section .container {
   width: 100%;
   position: relative;
   text-align: center;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
 }
 
 .counts .count-box i {
@@ -565,7 +573,7 @@ section .container {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
   transition: ease-in-out 0.3s;
 }
 
@@ -585,7 +593,7 @@ section .container {
 }
 
 .interests .icon-box:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--surface-hover);
 }
 
 /*--------------------------------------------------------------
@@ -619,13 +627,13 @@ section .container {
 
 .testimonials .testimonial-item h4 {
   font-size: 14px;
-  color: #999;
+  color: var(--muted-strong);
   margin: 0 0 0 45px;
 }
 
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--muted-weak);
   font-size: 26px;
 }
 
@@ -794,7 +802,7 @@ section .container {
 }
 
 .services .icon-box:hover .icon {
-  background: #fff;
+  background: var(--surface-bg);
 }
 
 .services .icon-box:hover .icon i {
@@ -802,7 +810,7 @@ section .container {
 }
 
 .services .icon-box:hover .icon::before {
-  background: #35e888;
+  background: color-mix(in srgb, var(--primary), white 10%);
 }
 
 .services .icon-box:hover h4 a,
@@ -1047,7 +1055,7 @@ section .container {
   color: #444444;
   padding: 20px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
 }
 
 .contact .info-box i.bx {
@@ -1094,13 +1102,13 @@ section .container {
 
 .contact .php-email-form {
   padding: 30px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
 }
 
 .contact .php-email-form .error-message {
   display: none;
-  background: rgba(255, 255, 255, 0.08);
-  background: #ed3c0d;
+  background: var(--bg-card);
+  background: var(--danger);
   text-align: left;
   padding: 15px;
   font-weight: 600;
@@ -1112,7 +1120,7 @@ section .container {
 
 .contact .php-email-form .sent-message {
   display: none;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
   background: var(--primary);
   text-align: center;
   padding: 15px;
@@ -1121,7 +1129,7 @@ section .container {
 
 .contact .php-email-form .loading {
   display: none;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
   text-align: center;
   padding: 15px;
 }
@@ -1143,7 +1151,7 @@ section .container {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
   border: 0;
   transition: 0.3s;
   color: var(--text-main);
