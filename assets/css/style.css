@@ -16,6 +16,9 @@
 
   --placeholder: rgba(255,255,255,0.3);
   --danger: #ed3c0d;
+
+  --bg-image: url("../img/bg.jpg");
+
 }
 
 /* ================= LIGHT MODE ================= */
@@ -36,6 +39,9 @@ body.light-mode {
 
   --placeholder: rgba(0,0,0,0.3);
   --danger: #ed3c0d;
+
+  --bg-image: url("../img/bg.jpg");
+  
 }
 
 body {
