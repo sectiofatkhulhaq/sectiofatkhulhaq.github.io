@@ -109,12 +109,12 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  
+  min-height: 100vh;
+  z-index: 10;
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
-  z-index: 997;
   overflow-y: auto;
 }
 
@@ -390,11 +390,14 @@ h6 {
 --------------------------------------------------------------*/
 section {
   display: none;
-  opacity: 0;
   transform: translateY(10px);
-  transition: 0.4s ease;
-  position: relative;
+  position: absolute;
+  top: 100vh;
+  left: 0;
   width: 100%;
+  opacity: 0;
+  transition: 0.4s ease;
+  z-index: 5;
 }
 
 section.section-show {
@@ -402,6 +405,8 @@ section.section-show {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  top: 80px;
+  opacity: 1;
 }
 
 section .container {
