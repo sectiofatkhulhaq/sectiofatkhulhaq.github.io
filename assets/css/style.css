@@ -23,25 +23,25 @@
 
 body.light-mode {
   /* ================= LIGHT MODE (GREEN + BLACK INVERTED THEME) ================= */
-  --bg-main: rgb(24, 210, 110);
+  --bg-main: rgb(0, 255, 115);
 
-  --surface-bg: rgba(24, 210, 110, 0.06);
-  --bg-card: rgba(24, 210, 110, 0.08);
-  --soft-bg: rgba(24, 210, 110, 0.05);
+  --surface-bg: rgba(0, 255, 115, 0.16);
+  --bg-card: rgba(0, 255, 115, 0.18);
+  --soft-bg: rgba(0, 255, 115, 0.15);
 
   --text-main: rgb(0, 0, 0);
   --text-secondary: rgba(0, 0, 0, 0.72);
 
-  --primary: rgb(24, 210, 110);
-  --primary-hover: rgb(18, 184, 94);
+  --primary: rgb(0, 255, 115);
+  --primary-hover: rgb(0, 255, 115);
 
-  --border-color: rgba(24, 210, 110, 0.12);
-  --hover-bg: rgba(24, 210, 110, 0.10);
+  --border-color: rgba(0, 255, 115, 0.22);
+  --hover-bg: rgba(0, 255, 115, 0.20);
 
-  --shadow: 0 12px 35px rgba(24, 210, 110, 0.45);
+  --shadow: 0 12px 35px rgba(0, 255, 115, 0.65);
 
-  --muted-strong: rgba(24, 210, 110, 0.6);
-  --muted-weak: rgba(24, 210, 110, 0.35);
+  --muted-strong: rgba(0, 255, 115, 0.16);
+  --muted-weak: rgba(0, 255, 115, 0.45);
 }
 
 body {
