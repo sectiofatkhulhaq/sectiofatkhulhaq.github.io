@@ -52,6 +52,12 @@ body, a, button, .navbar a, .icon-box, .count-box {
               box-shadow 0.3s ease;
 }
 
+html, body {
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--bg-main);
@@ -109,7 +115,7 @@ h6 {
   display: flex;
   align-items: center;
   z-index: 997;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 #header h1 {
@@ -383,17 +389,18 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  position: absolute;
-  inset: 0;
+  display: none;
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  transform: translateY(10px);
   transition: 0.4s ease;
+  position: relative;
+  width: 100%;
 }
 
 section.section-show {
+  display: block;
   opacity: 1;
-  visibility: visible;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
