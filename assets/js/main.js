@@ -1,293 +1,274 @@
 /**
- * Template Name: Personal
- * Updated: Sep 18 2023 with Bootstrap v5.3.2
- * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
+ * Ultimate Clean & Optimized Personal Portfolio JS
  */
+
 (function () {
-	'use strict';
+  "use strict";
 
-	/**
-	 * Easy selector helper function
-	 */
-	const select = (el, all = false) => {
-		el = el.trim();
-		if (all) {
-			return [...document.querySelectorAll(el)];
-		} else {
-			return document.querySelector(el);
-		}
-	};
+  // =============================
+  // Helper
+  // =============================
+  const select = (el, all = false) => {
+    el = el.trim();
+    return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+  };
 
-	/**
-	 * Easy event listener function
-	 */
-	const on = (type, el, listener, all = false) => {
-		let selectEl = select(el, all);
+  const on = (type, el, listener, all = false) => {
+    const elements = select(el, all);
+    if (!elements) return;
 
-		if (selectEl) {
-			if (all) {
-				selectEl.forEach((e) => e.addEventListener(type, listener));
-			} else {
-				selectEl.addEventListener(type, listener);
-			}
-		}
-	};
+    if (all) {
+      elements.forEach(e => e.addEventListener(type, listener));
+    } else {
+      elements.addEventListener(type, listener);
+    }
+  };
 
-	/**
-	 * Scrolls to an element with header offset
-	 */
-	const scrollto = (el) => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-	};
+  // =============================
+  // Smooth Scroll (lebih akurat)
+  // =============================
+  const scrollto = (el) => {
+    const element = select(el);
+    if (!element) return;
 
-	/**
-	 * Mobile nav toggle
-	 */
-	on('click', '.mobile-nav-toggle', function (e) {
-		select('#navbar').classList.toggle('navbar-mobile');
-		this.classList.toggle('bi-list');
-		this.classList.toggle('bi-x');
-	});
+    const offset = 80;
+    const top = element.offsetTop - offset;
 
-	/**
-	 * Scrool with ofset on links with a class name .scrollto
-	 */
-	on(
-		'click',
-		'#navbar .nav-link',
-		function (e) {
-			let section = select(this.hash);
-			if (section) {
-				e.preventDefault();
+    window.scrollTo({
+      top: top,
+      behavior: "smooth"
+    });
+  };
 
-				let navbar = select('#navbar');
-				let header = select('#header');
-				let sections = select('section', true);
-				let navlinks = select('#navbar .nav-link', true);
+  // =============================
+  // Mobile Navbar
+  // =============================
+  on("click", ".mobile-nav-toggle", function () {
+    const navbar = select("#navbar");
+    navbar.classList.toggle("navbar-mobile");
 
-				navlinks.forEach((item) => {
-					item.classList.remove('active');
-				});
+    this.classList.toggle("bi-list");
+    this.classList.toggle("bi-x");
+  });
 
-				this.classList.add('active');
+  // =============================
+  // Navigation Click
+  // =============================
+  on("click", "#navbar .nav-link", function (e) {
+    const section = select(this.hash);
+    if (!section) return;
 
-				if (navbar.classList.contains('navbar-mobile')) {
-					navbar.classList.remove('navbar-mobile');
-					let navbarToggle = select('.mobile-nav-toggle');
-					navbarToggle.classList.toggle('bi-list');
-					navbarToggle.classList.toggle('bi-x');
-				}
+    e.preventDefault();
 
-				if (this.hash == '#header') {
-					header.classList.remove('header-top');
-					sections.forEach((item) => {
-						item.classList.remove('section-show');
-					});
-					return;
-				}
+    const navbar = select("#navbar");
+    const header = select("#header");
+    const sections = select("section", true);
+    const navlinks = select("#navbar .nav-link", true);
 
-				if (!header.classList.contains('header-top')) {
-					header.classList.add('header-top');
-					setTimeout(function () {
-						sections.forEach((item) => {
-							item.classList.remove('section-show');
-						});
-						section.classList.add('section-show');
-					}, 350);
-				} else {
-					sections.forEach((item) => {
-						item.classList.remove('section-show');
-					});
-					section.classList.add('section-show');
-				}
+    navlinks.forEach(el => el.classList.remove("active"));
+    this.classList.add("active");
 
-				scrollto(this.hash);
-			}
-		},
-		true
-	);
+    if (navbar.classList.contains("navbar-mobile")) {
+      navbar.classList.remove("navbar-mobile");
+      const toggle = select(".mobile-nav-toggle");
+      toggle.classList.remove("bi-x");
+      toggle.classList.add("bi-list");
+    }
 
-	/**
-	 * Activate/show sections on load with hash links
-	 */
-	window.addEventListener('load', () => {
-		if (window.location.hash) {
-			let initial_nav = select(window.location.hash);
+    if (this.hash === "#header") {
+      header.classList.remove("header-top");
+      sections.forEach(sec => sec.classList.remove("section-show"));
+      return;
+    }
 
-			if (initial_nav) {
-				let header = select('#header');
-				let navlinks = select('#navbar .nav-link', true);
+    if (!header.classList.contains("header-top")) {
+      header.classList.add("header-top");
+      setTimeout(() => {
+        sections.forEach(sec => sec.classList.remove("section-show"));
+        section.classList.add("section-show");
+      }, 250);
+    } else {
+      sections.forEach(sec => sec.classList.remove("section-show"));
+      section.classList.add("section-show");
+    }
 
-				header.classList.add('header-top');
+    scrollto(this.hash);
+  }, true);
 
-				navlinks.forEach((item) => {
-					if (item.getAttribute('href') == window.location.hash) {
-						item.classList.add('active');
-					} else {
-						item.classList.remove('active');
-					}
-				});
+  // =============================
+  // Load Hash
+  // =============================
+  window.addEventListener("load", () => {
+    if (window.location.hash) {
+      const initial = select(window.location.hash);
+      if (!initial) return;
 
-				setTimeout(function () {
-					initial_nav.classList.add('section-show');
-				}, 350);
+      const header = select("#header");
+      const navlinks = select("#navbar .nav-link", true);
 
-				scrollto(window.location.hash);
-			}
-		}
-	});
+      header.classList.add("header-top");
 
-	/**
-	 * Skills animation
-	 */
-	let skilsContent = select('.skills-content');
-	if (skilsContent) {
-		new Waypoint({
-			element: skilsContent,
-			offset: '80%',
-			handler: function (direction) {
-				let progress = select('.progress .progress-bar', true);
-				progress.forEach((el) => {
-					el.style.width = el.getAttribute('aria-valuenow') + '%';
-				});
-			},
-		});
-	}
+      navlinks.forEach(link => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === window.location.hash
+        );
+      });
 
-	/**
-	 * Testimonials slider
-	 */
-	new Swiper('.testimonials-slider', {
-		speed: 600,
-		loop: true,
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: false,
-		},
-		slidesPerView: 'auto',
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'bullets',
-			clickable: true,
-		},
-		breakpoints: {
-			320: {
-				slidesPerView: 1,
-				spaceBetween: 20,
-			},
+      setTimeout(() => {
+        initial.classList.add("section-show");
+      }, 250);
 
-			1200: {
-				slidesPerView: 3,
-				spaceBetween: 20,
-			},
-		},
-	});
+      scrollto(window.location.hash);
+    }
+  });
 
-	/**
-	 * Porfolio isotope and filter
-	 */
-	window.addEventListener('load', () => {
-		let portfolioContainer = select('.portfolio-container');
-		if (portfolioContainer) {
-			let portfolioIsotope = new Isotope(portfolioContainer, {
-				itemSelector: '.portfolio-item',
-				layoutMode: 'fitRows',
-			});
+  // =============================
+  // Skills Animation
+  // =============================
+  if (typeof Waypoint !== "undefined") {
+    const skills = select(".skills-content");
 
-			let portfolioFilters = select('#portfolio-flters li', true);
+    if (skills) {
+      new Waypoint({
+        element: skills,
+        offset: "85%",
+        handler: () => {
+          select(".progress .progress-bar", true).forEach(el => {
+            el.style.width = el.getAttribute("aria-valuenow") + "%";
+          });
+        }
+      });
+    }
+  }
 
-			on(
-				'click',
-				'#portfolio-flters li',
-				function (e) {
-					e.preventDefault();
-					portfolioFilters.forEach(function (el) {
-						el.classList.remove('filter-active');
-					});
-					this.classList.add('filter-active');
+  // =============================
+  // Swiper
+  // =============================
+  if (typeof Swiper !== "undefined") {
+    new Swiper(".testimonials-slider", {
+      speed: 700,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      breakpoints: {
+        1200: {
+          slidesPerView: 3
+        }
+      }
+    });
 
-					portfolioIsotope.arrange({
-						filter: this.getAttribute('data-filter'),
-					});
-				},
-				true
-			);
-		}
-	});
+    new Swiper(".portfolio-details-slider", {
+      speed: 500,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      }
+    });
+  }
 
-	/**
-	 * Initiate portfolio lightbox
-	 */
-	const portfolioLightbox = GLightbox({
-		selector: '.portfolio-lightbox',
-	});
+  // =============================
+  // Portfolio Filter
+  // =============================
+  window.addEventListener("load", () => {
+    if (typeof Isotope !== "undefined") {
+      const container = select(".portfolio-container");
+      if (!container) return;
 
-	/**
-	 * Initiate portfolio details lightbox
-	 */
-	const portfolioDetailsLightbox = GLightbox({
-		selector: '.portfolio-details-lightbox',
-		width: '90%',
-		height: '90vh',
-	});
+      const iso = new Isotope(container, {
+        itemSelector: ".portfolio-item",
+        layoutMode: "fitRows"
+      });
 
-	const professions = [
-		'Network Engineer',
-		'Network Security Engineer',
-		'IoT Engineer',
-		'Cyber Security Engineer',
-	];
-	let professionIndex = 0;
+      on("click", "#portfolio-flters li", function (e) {
+        e.preventDefault();
 
-	function changeProfession() {
-		const professionSpan = document.getElementById('profession');
-		professionSpan.classList.remove('typing-animation');
-		const profession = professions[professionIndex];
-		const characters = profession.split('');
-		let index = 0;
-		let typedProfession = '';
+        select("#portfolio-flters li", true)
+          .forEach(el => el.classList.remove("filter-active"));
 
-		const typingInterval = setInterval(() => {
-			if (index < characters.length) {
-				typedProfession += characters[index];
-				professionSpan.textContent = typedProfession;
-				index++;
-			} else {
-				clearInterval(typingInterval);
-				setTimeout(() => {
-					professionSpan.classList.add('typing-animation');
-					professionIndex = (professionIndex + 1) % professions.length;
-				}, 1000);
-			}
-		}, 100);
-	}
+        this.classList.add("filter-active");
 
-	setInterval(changeProfession, 5000);
+        iso.arrange({
+          filter: this.getAttribute("data-filter")
+        });
+      }, true);
+    }
+  });
 
-	/**
-	 * Portfolio details slider
-	 */
-	new Swiper('.portfolio-details-slider', {
-		speed: 400,
-		loop: true,
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: false,
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'bullets',
-			clickable: true,
-		},
-	});
+  // =============================
+  // Lightbox
+  // =============================
+  if (typeof GLightbox !== "undefined") {
+    GLightbox({ selector: ".portfolio-lightbox" });
+    GLightbox({
+      selector: ".portfolio-details-lightbox",
+      width: "90%",
+      height: "90vh"
+    });
+  }
 
-	/**
-	 * Initiate Pure Counter
-	 */
-	new PureCounter();
+  // =============================
+  // Typing Effect (SUPER SMOOTH)
+  // =============================
+  const texts = [
+    "Network Engineer",
+    "Network Security Engineer",
+    "Cyber Security Engineer",
+    "IoT Engineer"
+  ];
+
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    const el = document.getElementById("profession");
+    if (!el) return;
+
+    const current = texts[textIndex];
+
+    if (isDeleting) {
+      charIndex--;
+    } else {
+      charIndex++;
+    }
+
+    el.textContent = current.substring(0, charIndex);
+
+    let speed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === current.length) {
+      speed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+      speed = 500;
+    }
+
+    setTimeout(typeEffect, speed);
+  }
+
+  window.addEventListener("load", typeEffect);
+
+  // =============================
+  // Counter
+  // =============================
+  if (typeof PureCounter !== "undefined") {
+    new PureCounter();
+  }
+
 })();
