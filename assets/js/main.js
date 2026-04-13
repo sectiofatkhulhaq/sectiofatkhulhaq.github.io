@@ -1,21 +1,23 @@
 /**
- * Ultimate Clean & Optimized Personal Portfolio JS (FIXED + AUTO THEME)
+ * Ultimate Clean & Optimized Personal Portfolio JS (FINAL FIXED VERSION)
  */
 
 (function () {
   "use strict";
 
   // =============================
-  // Helper
+  // Helper Functions
   // =============================
   const select = (el, all = false) => {
     el = el.trim();
-    return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
+    return all
+      ? [...document.querySelectorAll(el)]
+      : document.querySelector(el);
   };
 
   const on = (type, el, listener, all = false) => {
     const elements = select(el, all);
-    if (!elements) return;
+    if (!elements || (all && elements.length === 0)) return;
 
     if (all) {
       elements.forEach(e => e.addEventListener(type, listener));
@@ -24,9 +26,6 @@
     }
   };
 
-  // =============================
-  // Smooth Scroll
-  // =============================
   const scrollto = (el) => {
     const element = select(el);
     if (!element) return;
@@ -35,16 +34,18 @@
     const top = element.offsetTop - offset;
 
     window.scrollTo({
-      top: top,
+      top,
       behavior: "smooth"
     });
   };
 
   // =============================
-  // Mobile Navbar
+  // Mobile Navigation
   // =============================
   on("click", ".mobile-nav-toggle", function () {
     const navbar = select("#navbar");
+    if (!navbar) return;
+
     navbar.classList.toggle("navbar-mobile");
 
     this.classList.toggle("bi-list");
@@ -52,7 +53,7 @@
   });
 
   // =============================
-  // Navigation Click
+  // Navigation Handling
   // =============================
   on("click", "#navbar .nav-link", function (e) {
     const section = select(this.hash);
@@ -68,21 +69,27 @@
     navlinks.forEach(el => el.classList.remove("active"));
     this.classList.add("active");
 
-    if (navbar.classList.contains("navbar-mobile")) {
+    // close mobile nav
+    if (navbar && navbar.classList.contains("navbar-mobile")) {
       navbar.classList.remove("navbar-mobile");
+
       const toggle = select(".mobile-nav-toggle");
-      toggle.classList.remove("bi-x");
-      toggle.classList.add("bi-list");
+      if (toggle) {
+        toggle.classList.remove("bi-x");
+        toggle.classList.add("bi-list");
+      }
     }
 
+    // header state
     if (this.hash === "#header") {
-      header.classList.remove("header-top");
+      header?.classList.remove("header-top");
       sections.forEach(sec => sec.classList.remove("section-show"));
       return;
     }
 
-    if (!header.classList.contains("header-top")) {
+    if (header && !header.classList.contains("header-top")) {
       header.classList.add("header-top");
+
       setTimeout(() => {
         sections.forEach(sec => sec.classList.remove("section-show"));
         section.classList.add("section-show");
@@ -96,35 +103,35 @@
   }, true);
 
   // =============================
-  // Load Hash
+  // Load on Hash
   // =============================
   window.addEventListener("load", () => {
-    if (window.location.hash) {
-      const initial = select(window.location.hash);
-      if (!initial) return;
+    if (!window.location.hash) return;
 
-      const header = select("#header");
-      const navlinks = select("#navbar .nav-link", true);
+    const initial = select(window.location.hash);
+    if (!initial) return;
 
-      header.classList.add("header-top");
+    const header = select("#header");
+    const navlinks = select("#navbar .nav-link", true);
 
-      navlinks.forEach(link => {
-        link.classList.toggle(
-          "active",
-          link.getAttribute("href") === window.location.hash
-        );
-      });
+    header?.classList.add("header-top");
 
-      setTimeout(() => {
-        initial.classList.add("section-show");
-      }, 250);
+    navlinks.forEach(link => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === window.location.hash
+      );
+    });
 
-      scrollto(window.location.hash);
-    }
+    setTimeout(() => {
+      initial.classList.add("section-show");
+    }, 250);
+
+    scrollto(window.location.hash);
   });
 
   // =============================
-  // Skills Animation
+  // Skills Animation (Waypoint)
   // =============================
   if (typeof Waypoint !== "undefined") {
     const skills = select(".skills-content");
@@ -133,7 +140,7 @@
       new Waypoint({
         element: skills,
         offset: "85%",
-        handler: () => {
+        handler: function () {
           select(".progress .progress-bar", true).forEach(el => {
             el.style.width = el.getAttribute("aria-valuenow") + "%";
           });
@@ -143,7 +150,7 @@
   }
 
   // =============================
-  // Swiper
+  // Swiper Init
   // =============================
   if (typeof Swiper !== "undefined") {
     new Swiper(".testimonials-slider", {
@@ -179,38 +186,39 @@
   }
 
   // =============================
-  // Portfolio Filter
+  // Portfolio Filter (Isotope)
   // =============================
   window.addEventListener("load", () => {
-    if (typeof Isotope !== "undefined") {
-      const container = select(".portfolio-container");
-      if (!container) return;
+    if (typeof Isotope === "undefined") return;
 
-      const iso = new Isotope(container, {
-        itemSelector: ".portfolio-item",
-        layoutMode: "fitRows"
+    const container = select(".portfolio-container");
+    if (!container) return;
+
+    const iso = new Isotope(container, {
+      itemSelector: ".portfolio-item",
+      layoutMode: "fitRows"
+    });
+
+    on("click", "#portfolio-flters li", function (e) {
+      e.preventDefault();
+
+      select("#portfolio-flters li", true)
+        .forEach(el => el.classList.remove("filter-active"));
+
+      this.classList.add("filter-active");
+
+      iso.arrange({
+        filter: this.getAttribute("data-filter")
       });
-
-      on("click", "#portfolio-flters li", function (e) {
-        e.preventDefault();
-
-        select("#portfolio-flters li", true)
-          .forEach(el => el.classList.remove("filter-active"));
-
-        this.classList.add("filter-active");
-
-        iso.arrange({
-          filter: this.getAttribute("data-filter")
-        });
-      }, true);
-    }
+    }, true);
   });
 
   // =============================
-  // Lightbox
+  // Lightbox (GLightbox)
   // =============================
   if (typeof GLightbox !== "undefined") {
     GLightbox({ selector: ".portfolio-lightbox" });
+
     GLightbox({
       selector: ".portfolio-details-lightbox",
       width: "90%",
@@ -219,7 +227,7 @@
   }
 
   // =============================
-  // Typing Effect
+  // Typing Effect (FIXED SAFE LOOP)
   // =============================
   const texts = [
     "Network Engineer",
@@ -231,6 +239,7 @@
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
+  let typingStarted = false;
 
   function typeEffect() {
     const el = document.getElementById("profession");
@@ -238,17 +247,21 @@
 
     const current = texts[textIndex];
 
-    if (isDeleting) charIndex--;
-    else charIndex++;
+    if (!isDeleting) {
+      charIndex++;
+    } else {
+      charIndex--;
+    }
 
     el.textContent = current.substring(0, charIndex);
 
     let speed = isDeleting ? 50 : 100;
 
     if (!isDeleting && charIndex === current.length) {
-      speed = 2000;
+      speed = 1500;
       isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
+    } 
+    else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       textIndex = (textIndex + 1) % texts.length;
       speed = 500;
@@ -257,7 +270,12 @@
     setTimeout(typeEffect, speed);
   }
 
-  window.addEventListener("load", typeEffect);
+  window.addEventListener("load", () => {
+    if (!typingStarted) {
+      typingStarted = true;
+      typeEffect();
+    }
+  });
 
   // =============================
   // Counter
@@ -267,25 +285,36 @@
   }
 
   // =============================
-  // THEME SYSTEM (AUTO + MANUAL)
+  // Theme System (AUTO + MANUAL FIXED)
   // =============================
   const toggleBtn = document.getElementById("theme-toggle");
+
+  function updateToggleIcon(theme) {
+    if (!toggleBtn) return;
+
+    toggleBtn.innerHTML =
+      theme === "light"
+        ? '<i class="bi bi-sun"></i>'
+        : '<i class="bi bi-moon"></i>';
+  }
 
   function applyTheme(theme, save = true) {
     if (theme === "light") {
       document.body.classList.add("light-mode");
-      if (toggleBtn) toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
+      updateToggleIcon("light");
+
       if (save) localStorage.setItem("theme", "light");
     } else {
       document.body.classList.remove("light-mode");
-      if (toggleBtn) toggleBtn.innerHTML = '<i class="bi bi-moon"></i>';
+      updateToggleIcon("dark");
+
       if (save) localStorage.setItem("theme", "dark");
     }
   }
 
   function getThemeByTime() {
     const hour = new Date().getHours();
-    return (hour >= 6 && hour < 18) ? "light" : "dark";
+    return hour >= 6 && hour < 18 ? "light" : "dark";
   }
 
   function initTheme() {
