@@ -227,7 +227,7 @@
   }
 
   // =============================
-  // Typing Effect (FIXED SAFE LOOP)
+  // Typing Effect
   // =============================
   const texts = [
     "Network Engineer",
@@ -260,8 +260,7 @@
     if (!isDeleting && charIndex === current.length) {
       speed = 1500;
       isDeleting = true;
-    } 
-    else if (isDeleting && charIndex === 0) {
+    } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       textIndex = (textIndex + 1) % texts.length;
       speed = 500;
@@ -285,7 +284,7 @@
   }
 
   // =============================
-  // Theme System (AUTO + MANUAL FIXED)
+  // THEME SYSTEM (AUTO 06–18 LIGHT / 18–06 DARK + MANUAL OVERRIDE)
   // =============================
   const toggleBtn = document.getElementById("theme-toggle");
 
@@ -298,41 +297,57 @@
         : '<i class="bi bi-moon"></i>';
   }
 
-  function applyTheme(theme, save = true) {
-    if (theme === "light") {
-      document.body.classList.add("light-mode");
-      updateToggleIcon("light");
-
-      if (save) localStorage.setItem("theme", "light");
-    } else {
-      document.body.classList.remove("light-mode");
-      updateToggleIcon("dark");
-
-      if (save) localStorage.setItem("theme", "dark");
-    }
-  }
-
   function getThemeByTime() {
     const hour = new Date().getHours();
     return hour >= 6 && hour < 18 ? "light" : "dark";
   }
 
+  function applyTheme(theme, save = true) {
+    if (theme === "light") {
+      document.body.classList.add("light-mode");
+      updateToggleIcon("light");
+    } else {
+      document.body.classList.remove("light-mode");
+      updateToggleIcon("dark");
+    }
+
+    if (save) {
+      localStorage.setItem("theme", theme);
+    }
+  }
+
   function initTheme() {
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme) {
+    if (savedTheme === "light" || savedTheme === "dark") {
       applyTheme(savedTheme, false);
     } else {
       applyTheme(getThemeByTime(), false);
     }
   }
 
-  window.addEventListener("load", initTheme);
+  function startAutoThemeWatcher() {
+    setInterval(() => {
+      const savedTheme = localStorage.getItem("theme");
+
+      // kalau user sudah manual override, jangan auto override
+      if (savedTheme) return;
+
+      applyTheme(getThemeByTime(), false);
+    }, 60 * 1000);
+  }
+
+  window.addEventListener("load", () => {
+    initTheme();
+    startAutoThemeWatcher();
+  });
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       const isLight = document.body.classList.contains("light-mode");
-      applyTheme(isLight ? "dark" : "light");
+      const newTheme = isLight ? "dark" : "light";
+
+      applyTheme(newTheme);
     });
   }
 
