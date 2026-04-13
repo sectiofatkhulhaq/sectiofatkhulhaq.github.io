@@ -1,47 +1,55 @@
 :root {
   /* ================= DARK MODE DEFAULT ================= */
+
   --bg-main: #1d1d1d;
-  --bg-overlay: rgba(0, 0, 0, 0.75);
+  --bg-overlay: rgba(0, 0, 0, 0.55);
+
+  --surface-bg: rgba(255, 255, 255, 0.04);
   --bg-card: rgba(255, 255, 255, 0.08);
+  --soft-bg: rgba(255, 255, 255, 0.06);
 
   --text-main: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.65);
+  --placeholder: rgba(255, 255, 255, 0.3);
 
   --primary: #18d26e;
 
-  --border-color: rgba(255,255,255,0.2);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --hover-bg: rgba(255, 255, 255, 0.12);
 
-  --soft-bg: rgba(255,255,255,0.08);
-  --hover-bg: rgba(255,255,255,0.12);
-
-  --placeholder: rgba(255,255,255,0.3);
   --danger: #ed3c0d;
 
   --bg-image: url("../img/bg.jpg");
-
 }
 
 /* ================= LIGHT MODE ================= */
 body.light-mode {
   --bg-main: #f8f9fa;
-  --bg-overlay: rgba(255, 255, 255, 0.72);
+  --bg-overlay: rgba(255, 255, 255, 0.18);
+
+  --surface-bg: rgba(0, 0, 0, 0.03);
   --bg-card: rgba(0, 0, 0, 0.06);
+  --soft-bg: rgba(0, 0, 0, 0.04);
 
   --text-main: #111111;
-  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-secondary: rgba(0, 0, 0, 0.70);
+  --placeholder: rgba(0, 0, 0, 0.30);
 
-  --primary: #18d26e;
+  --primary: #16c96a;
 
-  --border-color: rgba(0,0,0,0.10);
+  --border-color: rgba(0, 0, 0, 0.10);
+  --hover-bg: rgba(0, 0, 0, 0.08);
 
-  --soft-bg: rgba(0,0,0,0.05);
-  --hover-bg: rgba(0,0,0,0.10);
-
-  --placeholder: rgba(0,0,0,0.3);
   --danger: #ed3c0d;
 
   --bg-image: url("../img/bg.jpg");
-  
+}
+
+body, a, button, .navbar a, .icon-box, .count-box {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
 body {
@@ -49,20 +57,21 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  will-change: background-color;
 }
 
 body::before {
   content: "";
   position: fixed;
-  background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), var(--bg-image);
+  inset: 0;
+  background-image:
+    linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+    var(--bg-image);
   background-size: cover;
-  background-position: top right;
+  background-position: center;
   background-repeat: no-repeat;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  z-index: -1;
+  z-index: -2;
 }
 
 @media (min-width: 1024px) {
@@ -94,17 +103,13 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  transition: ease-in-out 0.3s;
+  
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   z-index: 997;
   overflow-y: auto;
-}
-
-#header * {
-  transition: ease-in-out 0.3s;
 }
 
 #header h1 {
@@ -266,7 +271,8 @@ h6 {
   font-weight: 400;
   color: var(--text-secondary);
   white-space: nowrap;
-  transition: 0.3s;
+  
+  position: relative;
 }
 
 .navbar a i,
@@ -285,7 +291,6 @@ h6 {
   left: 0;
   background-color: var(--primary);
   visibility: hidden;
-  width: 0px;
   transition: all 0.3s ease-in-out 0s;
 }
 
@@ -336,7 +341,7 @@ h6 {
   left: 0;
   bottom: 0;
   background: var(--bg-overlay);
-  transition: 0.3s;
+  
   z-index: 999;
   margin-top: 0;
 }
@@ -356,7 +361,7 @@ h6 {
   left: 15px;
   padding: 10px 0;
   overflow-y: auto;
-  transition: 0.3s;
+  
   border: 2px solid var(--border-color);
 }
 
@@ -379,10 +384,9 @@ h6 {
 --------------------------------------------------------------*/
 section {
   overflow: hidden;
-  position: absolute;
+  position: relative;
   width: 100%;
   top: 140px;
-  bottom: 100%;
   opacity: 0;
   transition: ease-in-out 0.4s;
   z-index: 2;
@@ -396,7 +400,8 @@ section.section-show {
 }
 
 section .container {
-  background: var(--bg-overlay);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
   padding: 30px;
 }
 
@@ -562,7 +567,7 @@ section .container {
   align-items: center;
   padding: 20px;
   background: var(--bg-card);
-  transition: ease-in-out 0.3s;
+  
 }
 
 .interests .icon-box i {
@@ -787,6 +792,7 @@ section .container {
 .services .icon-box:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: var(--text-main);
 }
 
 .services .icon-box:hover .icon {
@@ -833,7 +839,7 @@ section .container {
   color: var(--text-main);
   background: var(--soft-bg);
   margin: 0 3px 10px 3px;
-  transition: all 0.3s ease-in-out;
+  
   border-radius: 4px;
 }
 
@@ -847,7 +853,7 @@ section .container {
 }
 
 .portfolio .portfolio-wrap {
-  transition: 0.3s;
+  
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -935,7 +941,7 @@ section .container {
   margin: 0 2px;
   font-size: 28px;
   display: inline-block;
-  transition: 0.3s;
+  
 }
 
 .portfolio .portfolio-wrap .portfolio-links a:hover {
@@ -1081,7 +1087,7 @@ section .container {
   color: var(--text-main);
   line-height: 1;
   margin-right: 12px;
-  transition: 0.3s;
+  
 }
 
 .contact .info-box .social-links a:hover {
@@ -1095,7 +1101,6 @@ section .container {
 
 .contact .php-email-form .error-message {
   display: none;
-  background: var(--bg-card);
   background: var(--danger);
   text-align: left;
   padding: 15px;
@@ -1130,7 +1135,7 @@ section .container {
   height: 24px;
   margin: 0 10px -6px 0;
   border: 3px solid var(--primary);
-  border-top-color: var(--bg-main);
+  border-top-color: transparent;
   animation: animate-loading 1s linear infinite;
 }
 
@@ -1141,7 +1146,7 @@ section .container {
   font-size: 14px;
   background: var(--bg-card);
   border: 0;
-  transition: 0.3s;
+  
   color: var(--text-main);
 }
 
@@ -1219,7 +1224,7 @@ section .container {
 
 .credits a {
   color: var(--primary);
-  transition: 0.3s;
+  
 }
 
 .credits a:hover {
@@ -1263,7 +1268,7 @@ section .container {
   cursor: pointer;
   z-index: 9999;
   font-size: 18px;
-  transition: 0.3s;
+  
 }
 
 .theme-btn:hover {
