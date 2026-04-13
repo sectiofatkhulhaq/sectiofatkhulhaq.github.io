@@ -69,6 +69,10 @@ body {
   position: relative;
 }
 
+body.header-fixed {
+  padding-top: 80px;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -83,6 +87,7 @@ body::before {
   background-repeat: no-repeat;
 
   z-index: -1;
+  pointer-events: none;
 }
 
 @media (min-width: 1024px) {
@@ -116,10 +121,11 @@ h6 {
 #header {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start; /* FIX: dari center → ke atas */
-  padding-top: 120px;      /* kasih jarak dari atas */
+  align-items: flex-start;
+  padding-top: 120px;
   position: relative;
   overflow: hidden;
+  z-index: 1000;
 }
 
 #header h1 {
@@ -394,7 +400,7 @@ section {
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 section.section-show {
@@ -402,6 +408,10 @@ section.section-show {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+section {
+  scroll-margin-top: 100px;
 }
 
 section .container {

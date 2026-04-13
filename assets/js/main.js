@@ -1,5 +1,5 @@
 /**
- * Ultimate Clean & Optimized Personal Portfolio JS
+ * Ultimate Clean & Optimized Personal Portfolio JS (FIXED + AUTO THEME)
  */
 
 (function () {
@@ -25,7 +25,7 @@
   };
 
   // =============================
-  // Smooth Scroll (lebih akurat)
+  // Smooth Scroll
   // =============================
   const scrollto = (el) => {
     const element = select(el);
@@ -160,9 +160,7 @@
         clickable: true
       },
       breakpoints: {
-        1200: {
-          slidesPerView: 3
-        }
+        1200: { slidesPerView: 3 }
       }
     });
 
@@ -221,7 +219,7 @@
   }
 
   // =============================
-  // Typing Effect (SUPER SMOOTH)
+  // Typing Effect
   // =============================
   const texts = [
     "Network Engineer",
@@ -240,11 +238,8 @@
 
     const current = texts[textIndex];
 
-    if (isDeleting) {
-      charIndex--;
-    } else {
-      charIndex++;
-    }
+    if (isDeleting) charIndex--;
+    else charIndex++;
 
     el.textContent = current.substring(0, charIndex);
 
@@ -271,31 +266,45 @@
     new PureCounter();
   }
 
-})();
+  // =============================
+  // THEME SYSTEM (AUTO + MANUAL)
+  // =============================
+  const toggleBtn = document.getElementById("theme-toggle");
 
-// =============================
-// Dark / Light Mode Toggle
-// =============================
-const toggleBtn = document.getElementById("theme-toggle");
-
-if (toggleBtn) {
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-
-    // Simpan ke localStorage
-    if (document.body.classList.contains("light-mode")) {
-      localStorage.setItem("theme", "light");
-      toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
+  function applyTheme(theme, save = true) {
+    if (theme === "light") {
+      document.body.classList.add("light-mode");
+      if (toggleBtn) toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
+      if (save) localStorage.setItem("theme", "light");
     } else {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.innerHTML = '<i class="bi bi-moon"></i>';
+      document.body.classList.remove("light-mode");
+      if (toggleBtn) toggleBtn.innerHTML = '<i class="bi bi-moon"></i>';
+      if (save) localStorage.setItem("theme", "dark");
     }
-  });
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-    toggleBtn.innerHTML = '<i class="bi bi-sun"></i>';
   }
-}
+
+  function getThemeByTime() {
+    const hour = new Date().getHours();
+    return (hour >= 6 && hour < 18) ? "light" : "dark";
+  }
+
+  function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      applyTheme(savedTheme, false);
+    } else {
+      applyTheme(getThemeByTime(), false);
+    }
+  }
+
+  window.addEventListener("load", initTheme);
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isLight = document.body.classList.contains("light-mode");
+      applyTheme(isLight ? "dark" : "light");
+    });
+  }
+
+})();
